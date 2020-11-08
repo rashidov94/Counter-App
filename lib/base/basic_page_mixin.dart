@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/entity/language.dart';
 import 'package:flutter_app/repository/repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 import '../main.dart';
 import 'base_state_full.dart';
@@ -9,6 +10,8 @@ import 'base_state_full.dart';
 mixin BasicPage<Page extends BasePage> on BasePageState<Page> {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context,
+        designSize: Size(750, 1334), allowFontScaling: false);
     return createScaffold();
   }
 

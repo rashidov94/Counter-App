@@ -8,9 +8,6 @@ import 'package:flutter_app/screen/counter_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterPage extends BasePage {
-
-
-
   @override
   State<StatefulWidget> createState() {
     return _CounterPageState();
@@ -18,8 +15,6 @@ class CounterPage extends BasePage {
 }
 
 class _CounterPageState extends BasePageState<CounterPage> with BasicPage {
-
-
   @override
   Widget createScaffold() {
     return Scaffold(
@@ -94,5 +89,4 @@ class _CounterPageState extends BasePageState<CounterPage> with BasicPage {
       ),
     );
   }
-
 }
