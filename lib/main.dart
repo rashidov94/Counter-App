@@ -24,8 +24,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  Repository.createRepository(
-          null, null, AppSharedPreference(sharedPreferences))
+  Repository.createRepository(null, null, AppSharedPreference(sharedPreferences))
       .then((repository) {
     final store =
         Store<AppState>(appReducer, initialState: AppState(), middleware: [
