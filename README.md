@@ -31,3 +31,6 @@ This is Counter App which writing with Redux+Bloc pattern.
 
   #Responsive_screen library
     flutter_screenutil
+
+
+![alt text](https://github.com/[rashidov94]/[Counter-App]/blob/[repo_image]/structure.jpg?raw=true)
