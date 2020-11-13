@@ -3,31 +3,31 @@ This is Counter App which writing with Redux+Bloc pattern.
 
 # Used library
 
-  # Redux libraries
-  redux
-  flutter_redux
-  redux_remote_devtools
-  redux_dev_tools
+  #Redux libraries
+    redux
+    flutter_redux
+    redux_remote_devtools
+    redux_dev_tools
 
-  # Bloc libraries
-  bloc
-  flutter_bloc
+  #Bloc libraries
+    bloc
+    flutter_bloc
 
-  # Redux Middleware library
-  redux_thunk
+  #Redux Middleware library
+    redux_thunk
 
-  # SharedPrefeneces library
-  shared_preferences
+  #SharedPrefeneces library
+    shared_preferences
 
-  # Floor database library
-  floor
+  #Floor database library
+    floor
 
-  # Dio library
-  dio
+  #Dio library
+    dio
 
-  # Testing libraries
-  bloc_test
-  mockito
+  #Testing libraries
+    bloc_test
+    mockito
 
-  # Responsive_screen library
-  flutter_screenutil
+  #Responsive_screen library
+    flutter_screenutil
