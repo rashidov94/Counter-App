@@ -33,4 +33,4 @@ This is Counter App which writing with Redux+Bloc pattern.
     flutter_screenutil
 
 
-![alt text](https://github.com/[rashidov94]/[Counter-App]/blob/[repo_image]/redux+bloc.png?raw=true "Project Architecture")
+![alt text](https://github.com/rashidov94/Counter-App/blob/repo_image/architecture.PNG?raw=true "Project Architecture")
