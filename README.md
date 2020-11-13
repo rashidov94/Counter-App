@@ -29,7 +29,7 @@ This is Counter App which writing with Redux+Bloc pattern.
     bloc_test
     mockito
 
-  #Responsive_screen library
+  #Responsive screen library
     flutter_screenutil
 
 
