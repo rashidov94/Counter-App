@@ -10,8 +10,11 @@ import 'base_state_full.dart';
 mixin BasicPage<Page extends BasePage> on BasePageState<Page> {
   @override
   Widget build(BuildContext context) {
-    ScreenUtilInit(designSize: Size(750, 1334), allowFontScaling: false);
-    return createScaffold();
+    return ScreenUtilInit(
+      designSize: Size(750, 1334),
+      allowFontScaling: false,
+      builder: () => createScaffold(),
+    );
   }
 
   Widget createScaffold();
@@ -32,11 +35,11 @@ mixin BasicPage<Page extends BasePage> on BasePageState<Page> {
   }
 
   showSnackBar(context, String error) {
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text(error)));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error)));
   }
 
   showAlertDialog(BuildContext context) {
-    Widget okButton = FlatButton(
+    Widget okButton = TextButton(
       child: Text("OK"),
       onPressed: () {
         Navigator.of(context).pop();

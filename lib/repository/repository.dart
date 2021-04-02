@@ -12,25 +12,26 @@ class Repository
         DatabaseInterface,
         SharedPreferenceInterface,
         RemoteSourceInterface {
-  static Future<Repository> createRepository(String hostUrl,
-      String databaseName, AppSharedPreference sharedPreference) async {
+  static Future<Repository> createRepository(String? hostUrl,
+      String? databaseName, AppSharedPreference sharedPreference) async {
     final database = databaseName == null
         ? null
         : await $FloorAppDatabase.databaseBuilder('$databaseName.db').build();
-    final AppRemoteSource appRemoteSource =
-        hostUrl == null ? null : AppRemoteSource(hostUrl);
+
+    final appRemoteSource = hostUrl == null ? null : AppRemoteSource(hostUrl);
 
     return Repository(
-        remoteSource: hostUrl != null ? appRemoteSource : null,
-        database: databaseName != null ? database : null,
+        database: database,
+        remoteSource: appRemoteSource,
         sharedPreference: sharedPreference);
   }
 
-  final AppDatabase database;
-  final AppRemoteSource remoteSource;
+  final AppDatabase? database;
+  final AppRemoteSource? remoteSource;
   final AppSharedPreference sharedPreference;
 
-  Repository({this.database, this.remoteSource, this.sharedPreference});
+  Repository(
+      {this.database, this.remoteSource, required this.sharedPreference});
 
   @override
   String toString() {
@@ -39,22 +40,22 @@ class Repository
 
   @override
   Future<void> deleteItem(Todo item) {
-    return database.todoDao.deleteItem(item);
+    return database!.todoDao.deleteItem(item);
   }
 
   @override
   Future<List<Todo>> getAllTodo() {
-    return database.todoDao.getAllTodo();
+    return database!.todoDao.getAllTodo();
   }
 
   @override
   Future<void> insertItem(Todo item) {
-    return database.todoDao.insertItem(item);
+    return database!.todoDao.insertItem(item);
   }
 
   @override
   Future<void> updateItem(Todo item) {
-    return database.todoDao.updateItem(item);
+    return database!.todoDao.updateItem(item);
   }
 
   @override
@@ -69,6 +70,6 @@ class Repository
 
   @override
   Future<String> getHttp() {
-    return remoteSource.getHttp();
+    return remoteSource!.getHttp();
   }
 }

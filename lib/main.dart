@@ -24,13 +24,18 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  Repository.createRepository(null, null, AppSharedPreference(sharedPreferences))
+  Repository.createRepository(
+          null, null, AppSharedPreference(sharedPreferences))
       .then((repository) {
     final store =
         Store<AppState>(appReducer, initialState: AppState(), middleware: [
       thunkMiddleware,
     ]);
-    runApp(MyApp(store, repository));
+
+    repository.sharedPreference.getLocale().then((locale) {
+      runApp(MyApp(store, repository, locale));
+      return null;
+    });
   });
 }
 
@@ -38,22 +43,23 @@ class MyApp extends StatefulWidget {
   //final DevToolsStore<AppState> store;
   final Store<AppState> store;
   final Repository _repository;
+  final Locale _locale;
 
-  MyApp(this.store, this._repository);
+  MyApp(this.store, this._repository, this._locale);
 
   static changeRepository(BuildContext context, Repository repository) {
-    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>()!;
     state.changeRepository(repository);
   }
 
   static void changeLocale(BuildContext context, Locale newLocale) {
-    _MyAppState state = context.findAncestorStateOfType<_MyAppState>();
+    _MyAppState state = context.findAncestorStateOfType<_MyAppState>()!;
     state.changeLocale(newLocale);
   }
 
   @override
   State<StatefulWidget> createState() {
-    return _MyAppState(store, _repository);
+    return _MyAppState(store, _repository, this._locale);
   }
 }
 
@@ -63,7 +69,7 @@ class _MyAppState extends State<MyApp> {
   Repository _repository;
   Locale _locale;
 
-  _MyAppState(this.store, this._repository);
+  _MyAppState(this.store, this._repository, this._locale);
 
   changeRepository(Repository repository) {
     setState(() {
@@ -106,7 +112,7 @@ class _MyAppState extends State<MyApp> {
               ],
               localeResolutionCallback: (locale, supportedLocales) {
                 for (var supportedLocale in supportedLocales) {
-                  if (supportedLocale.languageCode == locale.languageCode &&
+                  if (supportedLocale.languageCode == locale!.languageCode &&
                       supportedLocale.countryCode == locale.countryCode) {
                     return supportedLocale;
                   }

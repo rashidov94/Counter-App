@@ -19,7 +19,7 @@ class _CounterPageState extends BasePageState<CounterPage> with BasicPage {
   Widget createScaffold() {
     return Scaffold(
       appBar: AppBar(
-        title: Text(getTranslated(context, 'change_language')),
+        title: Text(getTranslated(context, 'change_language')!),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -29,8 +29,8 @@ class _CounterPageState extends BasePageState<CounterPage> with BasicPage {
                 Icons.language,
                 color: Colors.white,
               ),
-              onChanged: (Language language) {
-                changeLanguage(language);
+              onChanged: (Language? language) {
+                changeLanguage(language!);
               },
               items: Language.languageList()
                   .map<DropdownMenuItem<Language>>(

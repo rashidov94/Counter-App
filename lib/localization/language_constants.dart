@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/repository/repository.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app_localization.dart';
 
@@ -24,6 +22,6 @@ Locale locale(String languageCode) {
   }
 }
 
-String getTranslated(BuildContext context, String key) {
-  return AppLocalization.of(context).translate(key);
+String? getTranslated(BuildContext context, String key) {
+  return AppLocalization.of(context)!.translate(key);
 }

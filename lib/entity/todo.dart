@@ -2,13 +2,12 @@ import 'package:floor/floor.dart';
 
 @Entity(tableName: 'todo')
 class Todo {
-
   @PrimaryKey(autoGenerate: true)
-  int id;
+  late int id;
 
-  String description;
+  final String description;
 
-  Todo({this.description});
+  Todo(this.description);
 
   @override
   String toString() {
